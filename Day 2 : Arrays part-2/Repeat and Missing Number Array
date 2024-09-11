@@ -1,0 +1,28 @@
+
+vector<int> Solution::repeatedNumber(const vector<int> &A) 
+{
+    //Sn
+    //S2n
+    long long n=A.size();
+    
+    long long Sn=(n*(n+1))/2;
+    long long S2n=(n*(n+1)*(2*n+1))/6;
+    
+    long long S=0;
+    long long S2=0;
+    for(auto i : A)
+    {
+        S+=(long long)i;
+        S2+=(long long)i*(long long)i;
+    }
+    
+    long long val1=S-Sn;
+    long long val2=S2-S2n;
+    
+    long long val3=val2/val1;
+    
+    long long x=(val1+val3)/2;
+    long long y=val3-x;
+    
+    return {(int)x,(int)y};
+}
